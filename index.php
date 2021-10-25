@@ -49,7 +49,7 @@
     </header>
     Index
     <button type="button" class="btn btn-primary">Primary</button>
-    <button>Old Button</button>
+
 </body>
 
 </html>
