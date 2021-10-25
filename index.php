@@ -48,7 +48,12 @@
         </div>
     </header>
     Index
-    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="confirm" class="btn btn-primary">Primary</button>
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+  <button class="btn btn-primary" type="confirm">Button</button>
+  <button class="btn btn-primary" type="confirm">Button</button>
+</div>
 
 </body>
 
