@@ -7,53 +7,144 @@
     <?php
     include 'head.php'
     ?>
+    <link href="./index.css" rel="stylesheet" />
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        .cloud {
+            height: 100%;
+            background-image: url("./assets/cloud.png");
+            background-size: cover;
+        }
+
+        body {
+            background-color: gray;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="p-3 mb-3 border-bottom">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
-                </a>
 
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-                    <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
-                </ul>
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                </form>
+    <div class="d-flex flex-column" style="height: 100vh">
+        <?php
+        include 'components/header.php'
+        ?>
+        <div class=" d-flex flex-column flex-grow-1">
+            <div class=" px-4 cloud flex-shrink d-table " style="padding-top: 120px; padding-bottom: 240px;">
+                <div class="mx-auto d-table " style="max-width: 1000px; ">
 
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
+                    <div class="bgColor text-white  d-inline-block py-2 px-3 ">
+                        <div class="d-flex">
+                            <img src="./assets/planeIcon.png" alt="planeIcon" style="width: 25px; object-fit: contain;" />
+                            <div class="ps-2" style="font-size: 18px;">FLIGHT</div>
+                        </div>
+                    </div>
+                    <div class="bgColor px-5 " style="border-radius: 0px 30px 30px 30px; padding-top: 40px; padding-bottom: 50px;">
+                        <form>
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault1" checked>
+                                    <label class="form-check-label text-white" for="flexRadioDefault1">
+                                        Round Trip
+                                    </label>
+                                </div>
+                                <div class="form-check ms-3">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2">
+                                    <label class="form-check-label text-white" for="flexRadioDefault2">
+                                        One Way
+                                    </label>
+                                </div>
+                                <div class="form-check ms-3">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2" disabled>
+                                    <label class="form-check-label text-white" for="flexRadioDefault2">
+                                        Multi-City
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap">
+
+                                <div class="d-flex flex-column mt-2">
+                                    <div class="text-white">From</div>
+                                    <input type="text" class="form-control" name="from">
+                                </div>
+                                <div class="d-flex flex-column ms-md-3 mt-2">
+                                    <div class="text-white">To</div>
+                                    <input type="text" class="form-control" name="to">
+                                </div>
+                                <div class="d-flex flex-column ms-md-3 mt-2">
+                                    <div class="text-white">Cabin Class</div>
+                                    <select class="form-select" name="carbinClass">
+                                        <option value="1">First</option>
+                                        <option value="2">Business</option>
+                                        <option selected value="3">Economy</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap">
+
+                                <div class="d-flex flex-column mt-2">
+                                    <div class="text-white">Departure</div>
+                                    <input type="date" class="form-control" name="departure">
+                                </div>
+                                <div class="d-flex flex-column ms-md-3 mt-2">
+                                    <div class="text-white">Return</div>
+                                    <input type="date" class="form-control" name="return">
+                                </div>
+                                <div class="d-flex flex-column ms-md-3 mt-2">
+                                    <div class="text-white">Adult (16+)</div>
+                                    <input type="number" class="form-control" name="adult" min="0" max="8" value="2">
+                                </div>
+                                <div class="d-flex flex-column ms-3 mt-2">
+                                    <div class="text-white">Children</div>
+                                    <input type="number" class="form-control" name="adult" min="0" max="8" value="0">
+                                </div>
+                                <div class="d-flex flex-column ms-md-3 mt-2">
+
+                                    <button type="button" class="mt-auto btn btn-danger bgSec" style="border-color: #FFA9A9;">SEARCH FLIGHT</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
+
+
+
+            </div>
+            <div id="brandLogo" class="carousel slide" data-bs-ride="carousel" style="background-color: #F3F3F3; width:100vw">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex flex-warp justify-content-center" style="gap: 32px">
+                            <img src="./assets/airlines/emirates.png" class="d-inline my-auto" alt="..." style="height: 70px;">
+                            <img src="./assets/airlines/ana.png" class="d-block my-auto" alt="..." style="height: 30px;">
+                            <img src="./assets/airlines/airasia.svg" class="d-block my-auto" alt="..." style="height: 25px;">
+                            <img src="./assets/airlines/thai-airways.png" class="d-block my-auto" alt="..." style="height: 32px;">
+                            <img src="./assets/airlines/asiana.svg" class="d-block my-auto" alt="..." style="height: 120px;">
+                        </div>
+                    </div>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#brandLogo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#brandLogo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
-    </header>
-    Index
-    <button type="confirm" class="btn btn-primary">Primary</button>
-
-<div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-primary" type="button">Button</button>
-  <button class="btn btn-primary" type="button">Button</button>
-</div>
+        <?php
+        include 'components/footer.php'
+        ?>
+    </div>
 
 </body>
 

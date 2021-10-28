@@ -1,0 +1,12 @@
+.bgColor {
+  background-color: #0a5f72;
+}
+
+.bgSec {
+  background-color: #ffa9a9;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
