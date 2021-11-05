@@ -5,10 +5,10 @@
 
     <title>FlyEazy</title>
     <?php
-    include 'head.php'
+    include '../head.php'
     ?>
 
-    <link href="./index.css" rel="stylesheet" />
+    <link href="../index.css" rel="stylesheet" />
 
     <style>
         body {
@@ -66,15 +66,15 @@
 <body>
     <div class="d-flex flex-column" style="height: 100vh">
         <?php
-        include 'components/header.php'
+        include '../components/header.php'
         ?>
         <div class=" d-flex flex-column flex-grow-1">
             <div class="bg"></div>
             <div class="bg-text">
                 <div class="mx-auto " style="max-width: 300px; padding-top: 120px; ">
 
-                    <div class="bgColor text-white" style="border-radius: 16px 16px 0px 0px; padding-top: 10px; padding-bottom: 10px;text-align:center">
-                        Sign In
+                    <div class="bgColorSec text-white" style="border-radius: 16px 16px 0px 0px; padding-top: 10px; padding-bottom: 10px;text-align:center">
+                        Staff Sign In
                     </div>
                     <div class="px-4 py-5 bg-white" style="border-radius: 0px 0px 16px 16px;">
                         <div class="mb-3">
@@ -93,14 +93,13 @@
                             <div class="ms-auto decorator ">Forgot Password?</div>
                         </div>
                         <div class="d-grid mt-4"><button type="button" class="btn btn-success login-button shadow rounded-pill"><strong>LOGIN</strong></button></div>
-                        <div class="text-center decorator mt-4">New User? <a href="./signup.php" class="text-black text-decoration-underline">Create new account</a></div>
-
+                        
                     </div>
                 </div>
             </div>
         </div>
         <?php
-        include 'components/footer.php'
+        include '../components/footer.php'
         ?>
     </div>
     </div>

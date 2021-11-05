@@ -51,13 +51,13 @@
         }
 
         .login-button {
-            background-color: #17E1CE;
-            border-color: #17E1CE;
+            background-color: #15E198;
+            border-color: #15E198;
         }
 
         .login-button:hover {
-            background-color: #07cbb8;
-            border-color: #07cbb8;
+            background-color: #08DE91;
+            border-color: #08DE91;
         }
     </style>
 
@@ -74,7 +74,7 @@
                 <div class="mx-auto " style="max-width: 300px; padding-top: 120px; ">
 
                     <div class="bgColor text-white" style="border-radius: 16px 16px 0px 0px; padding-top: 10px; padding-bottom: 10px;text-align:center">
-                        Sign In
+                        Sign Up
                     </div>
                     <div class="px-4 py-5 bg-white" style="border-radius: 0px 0px 16px 16px;">
                         <div class="mb-3">
@@ -83,18 +83,19 @@
                         <div class="mb-3">
                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password">
                         </div>
-
-                        <div class="d-flex">
-                            <div class="checkbox ">
-                                <label>
-                                    <input type="checkbox" value="remember-me"> <span class="decorator my-auto">Remember me</span>
-                                </label>
-                            </div>
-                            <div class="ms-auto decorator ">Forgot Password?</div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="First Name">
                         </div>
-                        <div class="d-grid mt-4"><button type="button" class="btn btn-success login-button shadow rounded-pill"><strong>LOGIN</strong></button></div>
-                        <div class="text-center decorator mt-4">New User? <a href="./signup.php" class="text-black text-decoration-underline">Create new account</a></div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Last Name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Mobile Phone">
+                        </div>
 
+                        
+                        <div class="d-grid mt-4"><button type="button" class="btn btn-success login-button shadow rounded-pill"><strong>REGISTER</strong></button></div>
+                        
                     </div>
                 </div>
             </div>
