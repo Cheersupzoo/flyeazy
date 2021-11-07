@@ -44,23 +44,23 @@
                         </div>
                     </div>
                     <div class="bgColor px-5 " style="border-radius: 0px 30px 30px 30px; padding-top: 40px; padding-bottom: 50px;">
-                        <form>
+                        <form action="booking.php" method="post">
                             <div class="d-flex flex-wrap">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault1" checked>
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault1" checked value="round">
                                     <label class="form-check-label text-white" for="flexRadioDefault1">
                                         Round Trip
                                     </label>
                                 </div>
                                 <div class="form-check ms-3">
-                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2" value="one">
                                     <label class="form-check-label text-white" for="flexRadioDefault2">
                                         One Way
                                     </label>
                                 </div>
                                 <div class="form-check ms-3">
-                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2" disabled>
-                                    <label class="form-check-label text-white" for="flexRadioDefault2">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2" value="multi" disabled>
+                                    <label class="form-check-label text-white" for="flexRadioDefault2" >
                                         Multi-City
                                     </label>
                                 </div>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">Cabin Class</div>
-                                    <select class="form-select" name="carbinClass">
+                                    <select class="form-select" name="cabinClass">
                                         <option value="1">First</option>
                                         <option value="2">Business</option>
                                         <option selected value="3">Economy</option>
@@ -102,11 +102,11 @@
                                 </div>
                                 <div class="d-flex flex-column ms-3 mt-2">
                                     <div class="text-white">Children</div>
-                                    <input type="number" class="form-control" name="adult" min="0" max="8" value="0">
+                                    <input type="number" class="form-control" name="children" min="0" max="8" value="0">
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
 
-                                    <button type="button" class="mt-auto btn btn-danger bgSec" style="border-color: #FFA9A9;">SEARCH FLIGHT</button>
+                                    <button type="submit" class="mt-auto btn btn-danger bgSec" style="border-color: #FFA9A9;">SEARCH FLIGHT</button>
                                 </div>
 
                             </div>
