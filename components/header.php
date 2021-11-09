@@ -15,6 +15,17 @@ echo <<<HTML
                     <li><a href="./index.php" class="nav-link px-2 link-light ">HOME</a></li>
                     <li><a href="/contract.php" class="nav-link px-2 link-light">CONTRACT</a></li>
                     <li><a href="./signin.php" class="nav-link px-2 link-light">SIGN IN/SIGN UP</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-white fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                User...
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="./booking_list.php">Booking List</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
 
                 

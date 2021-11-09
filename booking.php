@@ -141,37 +141,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div>
-                                <div><?php echo $to; ?> to <?php echo $from; ?></div>
-                                <div>Flying On <?php echo $return; ?></div>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Departure</th>
-                                            <th scope="col">Arrival</th>
-                                            <th scope="col">Airline</th>
-                                            <th scope="col">Code</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td scope="row">10:20</td>
-                                            <td>11:45</td>
-                                            <td>JAL</td>
-                                            <td>JL132</td>
-                                            <td><input type="checkbox" id="flight" name="flight" value="2"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">13:10</td>
-                                            <td>14:35</td>
-                                            <td>ANA</td>
-                                            <td>NH206</td>
-                                            <td><input type="checkbox" id="flight" name="flight" value="NH206"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

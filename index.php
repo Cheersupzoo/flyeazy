@@ -47,13 +47,13 @@
                         <form action="booking.php" method="post">
                             <div class="d-flex flex-wrap">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault1" checked value="round">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault1" value="round" disabled>
                                     <label class="form-check-label text-white" for="flexRadioDefault1">
                                         Round Trip
                                     </label>
                                 </div>
                                 <div class="form-check ms-3">
-                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2" value="one">
+                                    <input class="form-check-input" type="radio" name="tripType" id="flexRadioDefault2" checked value="one">
                                     <label class="form-check-label text-white" for="flexRadioDefault2">
                                         One Way
                                     </label>
@@ -79,9 +79,9 @@
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">Cabin Class</div>
                                     <select class="form-select" name="cabinClass">
-                                        <option value="1">First</option>
-                                        <option value="2">Business</option>
-                                        <option selected value="3">Economy</option>
+                                        <option value="First">First</option>
+                                        <option value="Business">Business</option>
+                                        <option selected value="Economy">Economy</option>
                                     </select>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">Return</div>
-                                    <input type="date" class="form-control" name="return">
+                                    <input type="date" class="form-control" name="return" disabled>
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">Adult (16+)</div>
