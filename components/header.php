@@ -1,4 +1,7 @@
 <?php
+$valid = isset($_SESSION["valid"]);
+
+
 echo <<<HTML
     
     <header class="p-3 " style="background-color: #0A5F72;">
@@ -14,7 +17,18 @@ echo <<<HTML
                 <ul class="nav col-12 col-lg-auto  mb-2 justify-content-center mb-md-0 fw-bolder">
                     <li><a href="./index.php" class="nav-link px-2 link-light ">HOME</a></li>
                     <li><a href="/contract.php" class="nav-link px-2 link-light">CONTRACT</a></li>
+                    <li><a href="./fake_signin.php" class="nav-link px-2 link-light">D</a></li>
+
+HTML;
+if (!$valid) {
+    echo <<<HTML
                     <li><a href="./signin.php" class="nav-link px-2 link-light">SIGN IN/SIGN UP</a></li>
+HTML;
+}
+
+if ($valid) {
+    echo <<<HTML
+
                     <li>
                         <div class="dropdown">
                             <button class="btn dropdown-toggle text-white fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,10 +36,16 @@ echo <<<HTML
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="./booking_list.php">Booking List</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
                             </ul>
                         </div>
                     </li>
+HTML;
+}
+
+
+echo <<<HTML
+
                 </ul>
 
                 
@@ -34,3 +54,5 @@ echo <<<HTML
     </header>
     
     HTML;
+
+?>

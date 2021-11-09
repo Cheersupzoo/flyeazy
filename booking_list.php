@@ -6,6 +6,9 @@
     <?php
     include 'head.php'
     ?>
+    <?php
+    include './components/isAuth.php'
+    ?>
 
     <link href="./index.css" rel="stylesheet" />
 
@@ -109,7 +112,7 @@
                                     <td></td>
                                 </tr>
                                 <tr class="table-secondary">
-                                <td></td>
+                                    <td></td>
                                     <td scope="row">BKK</td>
                                     <td>NRT</td>
                                     <td>JAL121</td>
@@ -120,7 +123,7 @@
                                     </td>
                                 </tr>
                                 <tr style="border-bottom: 4px solid #81ed98;">
-                                <td></td>
+                                    <td></td>
                                     <td scope="row">
                                         <div>Class: Economy</div>
                                         <div>Seat: A1 A2</div>
