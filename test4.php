@@ -11,12 +11,12 @@
 <body>
     <?php
     $pdo = require 'connect.php';
+    $username = 'peem6class@hotmail.com';
+    $password = 'xeezoeelover1';
 
-    $sql = 'SELECT * 
-		FROM public."Test"';
+    $sql = 'SELECT * FROM "User" as u WHERE u."Email" = \''.$username.'\' and u."Password" = \'' . $password .'\'';
 
     $statement = $pdo->query($sql);
-
 
     $testers = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,12 +25,14 @@
         echo "<table>";
         foreach ($testers as $tester) {
             echo "<tr>";
-            echo "<td>" . $tester['id'] . "</td>";
-            echo "<td>" . $tester['Name'] . "</td>";
-            echo "<td>" . $tester['Surname'] . "</td>";
+            echo "<td>" . $tester['FName'] . "</td>";
+            echo "<td>" . $tester['LName'] . "</td>";
+            echo "<td>" . $tester['uid'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
+    } else  {
+        echo "not exist";
     }
     ?>
 </body>
