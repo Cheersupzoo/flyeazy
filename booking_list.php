@@ -78,6 +78,7 @@
                         <table class="table">
                             <thead>
                                 <tr class="table-dark">
+                                    <th scope="col">ID</th>
                                     <th scope="col">From</th>
                                     <th scope="col">To</th>
                                     <th scope="col">Flight</th>
@@ -87,6 +88,7 @@
                             </thead>
                             <tbody>
                                 <tr class="table-secondary">
+                                    <td></td>
                                     <td scope="row">BKK</td>
                                     <td>NRT</td>
                                     <td>JAL121</td>
@@ -96,6 +98,7 @@
                                     </td>
                                 </tr>
                                 <tr style="border-bottom: 4px solid #81ed98;">
+                                    <td></td>
                                     <td scope="row">
                                         <div>Class: Economy</div>
                                         <div>Seat: A1 A2</div>
@@ -106,16 +109,18 @@
                                     <td></td>
                                 </tr>
                                 <tr class="table-secondary">
+                                <td></td>
                                     <td scope="row">BKK</td>
                                     <td>NRT</td>
                                     <td>JAL121</td>
                                     <td>15:10 05May2021</td>
                                     <td>
                                         <span>Payment Pending</span>
-                                        <button class="btn btn-warning">Payment</button>
+                                        <a href="./payment.php?bid=123" class="btn btn-warning">Payment</a>
                                     </td>
                                 </tr>
                                 <tr style="border-bottom: 4px solid #81ed98;">
+                                <td></td>
                                     <td scope="row">
                                         <div>Class: Economy</div>
                                         <div>Seat: A1 A2</div>
