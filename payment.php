@@ -9,6 +9,9 @@
     <?php
     include 'head.php'
     ?>
+    <?php
+    include './components/isAuth.php'
+    ?>
     <link href="./index.css" rel="stylesheet" />
     <link href="./styles/payment.css" rel="stylesheet" />
 
@@ -36,6 +39,7 @@
                         <div>To</div>
                         <div>Departure</div>
                         <div>Airline</div>
+                        <div>Price</div>
 
                     </div>
                 </div>

@@ -104,7 +104,7 @@
                                     <td></td>
                                     <td scope="row">
                                         <div>Class: Economy</div>
-                                        <div>Seat: A1 A2</div>
+                                        <div>Seat: <a href="./seat.php" class="btn btn-light">Reserve Seat</a></div>
                                     </td>
                                     <td>Operated by: Japan Airline</td>
                                     <td></td>
