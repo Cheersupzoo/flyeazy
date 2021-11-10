@@ -78,19 +78,19 @@
                     </div>
                     <div class="px-4 py-5 bg-white" style="border-radius: 0px 0px 16px 16px;">
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email">
+                            <input type="text" class="form-control" name="Email" id="formGroupExampleInput" placeholder="Email">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+                            <input type="text" class="form-control" name="Password" id="formGroupExampleInput2" placeholder="Password">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="First Name">
+                            <input type="text" class="form-control" name="FirstName" id="formGroupExampleInput3" placeholder="First Name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Last Name">
+                            <input type="text" class="form-control" name="LastName" id="formGroupExampleInput4" placeholder="Last Name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Mobile Phone">
+                            <input type="text" class="form-control" name="MobilePhone" id="formGroupExampleInput5" placeholder="Mobile Phone">
                         </div>
 
                         
