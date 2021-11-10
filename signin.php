@@ -77,11 +77,12 @@
                         Sign In
                     </div>
                     <div class="px-4 py-5 bg-white" style="border-radius: 0px 0px 16px 16px;">
+                    <form action="TEST.php" method="post" >
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Email">
+                            <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="Email">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Password">
+                            <input type="text" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
                         </div>
 
                         <div class="d-flex">
@@ -92,9 +93,9 @@
                             </div>
                             <div class="ms-auto decorator ">Forgot Password?</div>
                         </div>
-                        <div class="d-grid mt-4"><button type="button" class="btn btn-success login-button shadow rounded-pill"><strong>LOGIN</strong></button></div>
+                        <div class="d-grid mt-4"><button type="submit" class="btn btn-success login-button shadow rounded-pill"><strong>LOGIN</strong></button></div>
                         <div class="text-center decorator mt-4">New User? <a href="./signup.php" class="text-black text-decoration-underline">Create new account</a></div>
-
+                    </form>
                     </div>
                 </div>
             </div>
