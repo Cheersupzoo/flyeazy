@@ -1,3 +1,38 @@
+<?php
+$isPost = false;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $isPost = true;
+
+    $pdo = require 'connect.php';
+    $username = $_POST["email"];
+    $password = $_POST["password"];
+
+    $sql = 'SELECT * FROM "User" as u WHERE u."Email" = \'' . $username . '\' and u."Password" = \'' . $password . '\'';
+
+    $statement = $pdo->query($sql);
+    $testers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($testers) {
+        // echo "Login Sucessfully";
+        ob_start();
+        session_start();
+        $_SESSION['valid'] = true;
+        foreach ($testers as $tester) {
+            $_SESSION['FName'] = $tester['FName'];
+            $_SESSION['LName'] = $tester['LName'];
+            $_SESSION['uid'] = $tester['uid'];
+        }
+
+
+        header('location: ./');
+        die;
+    } else {
+        // echo "Wrong Username or Password";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +41,11 @@
     <title>FlyEazy</title>
     <?php
     include 'head.php'
+    ?>
+    <?php
+    if (isset($_SESSION["valid"])) {
+        header('location: ./');
+    }
     ?>
 
     <link href="./index.css" rel="stylesheet" />
@@ -77,25 +117,29 @@
                         Sign In
                     </div>
                     <div class="px-4 py-5 bg-white" style="border-radius: 0px 0px 16px 16px;">
-                    <form action="TEST.php" method="post" >
-                        <div class="mb-3">
-                            <input type="text" class="form-control" name="email" id="formGroupExampleInput" placeholder="Email">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
-                        </div>
-
-                        <div class="d-flex">
-                            <div class="checkbox ">
-                                <label>
-                                    <input type="checkbox" value="remember-me"> <span class="decorator my-auto">Remember me</span>
-                                </label>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <div class="mb-3">
+                                <input type="email" class="form-control" name="email" id="formGroupExampleInput" placeholder="Email" required>
                             </div>
-                            <div class="ms-auto decorator ">Forgot Password?</div>
-                        </div>
-                        <div class="d-grid mt-4"><button type="submit" class="btn btn-success login-button shadow rounded-pill"><strong>LOGIN</strong></button></div>
-                        <div class="text-center decorator mt-4">New User? <a href="./signup.php" class="text-black text-decoration-underline">Create new account</a></div>
-                    </form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password" required>
+                            </div>
+
+                            <div class="d-flex">
+                                <div class="checkbox ">
+                                    <label>
+                                        <input type="checkbox" value="remember-me"> <span class="decorator my-auto">Remember me</span>
+                                    </label>
+                                </div>
+                                <div class="ms-auto decorator ">Forgot Password?</div>
+                            </div>
+                            <div class="d-grid mt-4"><button type="submit" class="btn btn-success login-button shadow rounded-pill"><strong>LOGIN</strong></button></div>
+                            <div class="text-center decorator mt-4">New User? <a href="./signup.php" class="text-black text-decoration-underline">Create new account</a></div>
+
+                            <?php if ($isPost) : ?>
+                                <div class="text-center text-danger mt-2">Wrong Username or Password</div>
+                            <?php endif; ?>
+                        </form>
                     </div>
                 </div>
             </div>
