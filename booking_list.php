@@ -43,9 +43,7 @@
             /* Black w/opacity/see-through */
 
             position: absolute;
-            width: 100%;
-            height: 100%;
-
+            inset: 0;
         }
 
         .decorator {
@@ -70,7 +68,7 @@
         <?php
         include 'components/header.php'
         ?>
-        <div class=" d-flex flex-column flex-grow-1">
+        <div class=" d-flex flex-column flex-grow-1 position-relative">
             <div class="bg"></div>
             <div class="bg-text">
                 <div class="mx-auto bg-white" style="max-width: 800px; margin-top: 120px;">
