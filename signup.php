@@ -71,7 +71,7 @@
         <div class=" d-flex flex-column flex-grow-1">
             <div class="bg"></div>
             <div class="bg-text">
-                <div class="mx-auto " style="max-width: 300px; padding-top: 120px; ">
+                <form action="INSERT.php" method="post" class="mx-auto " style="max-width: 300px; padding-top: 120px; ">
 
                     <div class="bgColor text-white" style="border-radius: 16px 16px 0px 0px; padding-top: 10px; padding-bottom: 10px;text-align:center">
                         Sign Up
@@ -94,10 +94,10 @@
                         </div>
 
                         
-                        <div class="d-grid mt-4"><button type="button" class="btn btn-success login-button shadow rounded-pill"><strong>REGISTER</strong></button></div>
+                        <div class="d-grid mt-4"><button type="submit" class="btn btn-success login-button shadow rounded-pill"><strong>REGISTER</strong></button></div>
                         
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <?php

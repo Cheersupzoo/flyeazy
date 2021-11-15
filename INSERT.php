@@ -8,18 +8,19 @@ $LastName = $_POST['LastName'];
 $MobilePhone = $_POST['MobilePhone'];
 
 // insert a single publisher
-$sql = " INSERT INTO User (Email,Password,FirstName,LastName,MobilePhone) 
-VALUES ('".$Email."','".$Password."','".$FirstName."','".$LastName."','".$MobilePhone."')";
+$sql = ' INSERT INTO public."User" ("Email","Password","FName","LName") VALUES (:Email,:Password,:FName,:LName)';
 
 $statement = $pdo->prepare($sql);
 
 $statement->bindParam(':Email', $Email);
 $statement->bindParam(':Password', $Password);
-$statement->bindParam(':FisrtName', $FirstName);
-$statement->bindParam(':LastName', $LastName);
-$statement->bindParam(':MobilePhone', $MobilePhone);
+$statement->bindParam(':FName', $FirstName);
+$statement->bindParam(':LName', $LastName);
 $statement->execute();
 
 $tester_id = $pdo->lastInsertId();
 
-echo 'The tester id ' . $tester_id . ' was inserted';
+// echo 'The tester id ' . $tester_id . ' was inserted';
+if($tester_id) {
+    header("Location: ./signup");
+}
