@@ -28,6 +28,12 @@
             echo "";
     }
 
+    $pdo = require 'connect.php';
+    $sql = 'SELECT * , to_char("DateFrom" ,\'HH:MI am\') TimeFrom, to_char("DateTo" ,\'DD Mon YYYY HH:MI am\') TimeTo  FROM public."Flight" WHERE Date("DateFrom") = \'' . $departure . '\' AND fiid in (SELECT fiid FROM "FlightCode" WHERE "FromPlace" = \'' . $from . '\' AND "ToPlace" = \'' . $to . '\')';
+
+    $statement = $pdo->query($sql);
+    $flights = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     ?>
 
     <title>FlyEazy</title>
@@ -98,13 +104,15 @@
             <div class="bg-text">
                 <div class="mx-auto bgColor" style="max-width: 800px; margin-top: 120px;">
 
-                    <div class="d-flex">
+                    <form action="booking_insert.php" method="post" class="d-flex">
                         <div class="mx-4 my-5 p-2 bg-white d-flex flex-column" style="width: 30%">
                             <div><?php echo $tripTypeReadable; ?></div>
                             <div>Cabin Class: <?php echo $cabinClass; ?></div>
                             <div>Adult: <?php echo $adult; ?></div>
                             <div>Children: <?php echo $children; ?></div>
-                            <button class="btn btn-primary mt-auto">Confirm</button>
+                            <input class="visually-hidden" type="text" name="adult" value= <?php echo $adult; ?> />
+                            <input class="visually-hidden" type="text" name="cabinClass" value= <?php echo $cabinClass; ?> />
+                            <button type="submit" class="btn btn-primary mt-auto">Confirm</button>
                             <a href="./" class="btn text-black text-decoration-none">Cancel</a>
                         </div>
                         <div class="mx-4 my-5 p-2 bg-white d-flex flex-column" style="width: 70%">
@@ -122,26 +130,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td scope="row">10:20</td>
-                                            <td>11:45</td>
-                                            <td>JAL</td>
-                                            <td>JL131</td>
-                                            <td><input type="checkbox" id="flight" name="flight" value="JL131"></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">13:10</td>
-                                            <td>14:35</td>
-                                            <td>ANA</td>
-                                            <td>NH205</td>
-                                            <td><input type="checkbox" id="flight" name="flight" value="NH205"></td>
-                                        </tr>
+                                        <?php
+                                        foreach ($flights as $flight) {
+                                            echo '<tr>';
+                                            echo '<td scope="row">' . $flight['timefrom'] . '</td>';
+                                            echo '<td>' . $flight['timeto'] . '</td>';
+                                            echo '<td>JAL</td>';
+                                            echo '<td>' . $flight['fiid'] . '</td>';
+                                            echo '<td><input type="radio" id="flight" name="flight" value="' . $flight['fid'] . '" required /></td>';
+                                            echo '</td>';
+                                        }
+
+                                        ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

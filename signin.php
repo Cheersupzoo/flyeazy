@@ -122,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <input type="email" class="form-control" name="email" id="formGroupExampleInput" placeholder="Email" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password" required>
+                                <input type="password" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password" required>
                             </div>
 
                             <div class="d-flex">
