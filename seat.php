@@ -15,6 +15,18 @@
     include './components/isAuth.php'
     ?>
 
+    <?php
+    $pdo = require_once 'connect.php';
+    $sql = 'SELECT * , "FlightCode".fiid FlightCode FROM "Booking","FlightCode","Flight","Airline"
+    WHERE bid=' . $_GET["bid"] . ' AND "Flight".fid="Booking".fid AND "Flight".fiid="FlightCode".fiid AND "Airline".aid="FlightCode".aid';
+
+    $statement = $pdo->query($sql);
+    $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $booking = $bookings[0];
+
+    $seatConv = array(1 => "A", 2 => "B", 3 => "C", 4 => "D", 5 => "E", 6 => "F", 7 => "G", 8 => "H", 9 => "I");
+    ?>
+
     <link href="./index.css" rel="stylesheet" />
 
     <style>
@@ -74,7 +86,7 @@
         <?php
         include 'components/header.php'
         ?>
-        <form action="booking_list.php" class=" d-flex flex-column flex-grow-1 position-relative">
+        <form action="seat_insert.php" method="post" class=" d-flex flex-column flex-grow-1 position-relative">
             <div class="bg"></div>
             <div class="bg-text">
                 <div class="mx-auto bgColor" style="max-width: 800px; margin-top: 120px;">
@@ -82,12 +94,14 @@
                     <div class="d-flex">
                         <div class="mx-4 my-5 p-2 bg-white d-flex flex-column" style="width: 30%">
                             <h3>Select Seat</h3>
-                            <div>One Way</div>
-                            <div>Cabin Class: Economic</div>
-                            <div>Adult: 2</div>
-                            <div>Children: 0</div>
+                            <div>Booking ID: <?php echo $_GET["bid"] ?></div>
+                            <div>Cabin Class: <?php echo $booking["cabinClass"] ?></div>
+                            <div>Flight: <?php echo $booking["flightcode"] ?></div>
+                            <div>Airline: <?php echo $booking["AirlineFlight"] ?></div>
+                            <div>Seat: <?php echo $booking["Amount Ticket"] ?></div>
                             <button type="submit" class="btn btn-primary mt-auto">Confirm</button>
                             <a href="./booking_list.php" class="btn text-black text-decoration-none">Cancel</a>
+                            <input style="display:none" type="text" name="bid" value="<?php echo $_GET["bid"]; ?>">
                         </div>
                         <div class="mx-4 my-5 p-2 bg-white d-flex flex-column" style="width: 70%">
                             <div style=" height:380px; overflow:auto;">
@@ -96,8 +110,8 @@
                                         <tr>
                                             <th scope="col"></th>
                                             <?php
-                                            for ($x = 10; $x <= 20; $x++) {
-                                                echo '<th scope="col" style="text-transform: uppercase;">' . base_convert($x, 10, 36) . '</th>';
+                                            for ($x = 1; $x <= 9; $x++) {
+                                                echo '<th scope="col" style="text-transform: uppercase;">' . $seatConv[$x] . '</th>';
                                             }
                                             ?>
                                         </tr>
@@ -108,10 +122,8 @@
                                         for ($i = 1; $i <= 20; $i++) {
                                             echo "<tr>";
                                             echo '<td scope="row">' . $i . '</td>';
-                                            for ($x = 0; $x <= 10; $x++) {
-                                                echo <<<HTML
-                                                    <td scope="row"><input type="checkbox" /></td>
-                                                HTML;
+                                            for ($x = 1; $x <= 9; $x++) {
+                                                echo '<td scope="row"><input type="checkbox" name="seat[]" value="' . $i . ' ' . $x . '"/></td>';
                                             }
                                             echo "</tr>";
                                         }

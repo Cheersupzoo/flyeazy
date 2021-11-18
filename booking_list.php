@@ -6,8 +6,23 @@
     <?php
     include 'head.php'
     ?>
+
     <?php
     include './components/isAuth.php'
+    ?>
+
+    <?php
+
+    $pdo = require 'connect.php';
+    $sql = 'SELECT *, "FlightCode".fiid "FlightCode", to_char("DateFrom" ,\'HH:MI am DD Mon YYYY\') "DateFromF" FROM "Booking","FlightCode","Flight","Airline" WHERE uid=' . $_SESSION['uid'] . 'AND "Flight".fid="Booking".fid AND "Flight".fiid="FlightCode".fiid AND "Airline".aid="FlightCode".aid ORDER BY "DateFrom" DESC';
+
+
+    $statement = $pdo->query($sql);
+    $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $seatConv = array(1 => "A", 2 => "B", 3 => "C", 4 => "D", 5 => "E", 6 => "F", 7 => "G", 8 => "H", 9 => "I");
+
+
     ?>
 
     <link href="./index.css" rel="stylesheet" />
@@ -75,7 +90,7 @@
 
                     <div class="d-flex  flex-column p-4">
 
-                        <div class="">Booking List</div>
+                        <h2 class="text-center mb-2">Booking List</h2>
                         <table class="table">
                             <thead>
                                 <tr class="table-dark">
@@ -88,49 +103,71 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table-secondary">
-                                    <td></td>
-                                    <td scope="row">BKK</td>
-                                    <td>NRT</td>
-                                    <td>JAL121</td>
-                                    <td>13:10 01May2021</td>
-                                    <td>
-                                        <span>Complete</span>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: 4px solid #81ed98;">
-                                    <td></td>
-                                    <td scope="row">
-                                        <div>Class: Economy</div>
-                                        <div>Seat: <a href="./seat.php" class="btn btn-light">Reserve Seat</a></div>
-                                    </td>
-                                    <td>Operated by: Japan Airline</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr class="table-secondary">
-                                    <td></td>
-                                    <td scope="row">BKK</td>
-                                    <td>NRT</td>
-                                    <td>JAL121</td>
-                                    <td>15:10 05May2021</td>
-                                    <td>
-                                        <span>Payment Pending</span>
-                                        <a href="./payment.php?bid=123" class="btn btn-warning">Payment</a>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: 4px solid #81ed98;">
-                                    <td></td>
-                                    <td scope="row">
-                                        <div>Class: Economy</div>
-                                        <div>Seat: A1 A2</div>
-                                    </td>
-                                    <td>Operated by: Japan Airline</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <?php
+                                foreach ($bookings as $booking) {
+                                    switch ($booking["Status"]) {
+                                        case 'PAYMENT PENDING':
+                                            $status = 0;
+                                            break;
+                                        case 'NEED RESERVE SEAT':
+                                            $status = 1;
+                                            break;
+                                        case 'COMPLETE':
+                                            $status = 2;
+                                            break;
+                                        case 'FLEW':
+                                            $status = 3;
+                                            break;
+
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+
+
+                                    echo '<tr class="table-secondary">';
+                                    echo '<td class="fw-bold">' . $booking["bid"] . '</td>';
+                                    echo '<td scope="row">' . $booking["FromPlace"] . '</td>';
+                                    echo '<td>' . $booking["ToPlace"] . '</td>';
+                                    echo '<td>' . $booking["FlightCode"] . '</td>';
+                                    echo '<td>' . $booking["DateFromF"] . '</td>';
+                                    echo '<td>';
+                                    echo    '<span>' . $booking["Status"] . '</span>';
+                                    if ($status == 0) {
+                                        echo '<a href="./payment.php?bid=' . $booking["bid"] . '" class="btn btn-warning">Payment</a>';
+                                    } elseif ($status == 2) {
+                                        echo '<a href="./checkin.php?bid=' . $booking["bid"] . '" class="btn btn-info">Check-In</a>';
+                                    }
+                                    echo '</td>';
+
+                                    echo '</tr>';
+                                    echo '<tr style="border-bottom: 4px solid #81ed98;">';
+                                    echo '<td></td>';
+                                    echo '<td scope="row">';
+                                    echo '<div>Class: ' . $booking["cabinClass"] . '</div>';
+                                    if ($status == 1) {
+                                        echo '<div>Seat: <a href="./seat.php?bid=' . $booking["bid"] . '" class="btn btn-light">Reserve Seat</a></div>';
+                                    } else if ($status > 1) {
+                                        echo '<div>Seat: ';
+                                        $sql = 'SELECT * FROM "Ticket" WHERE bid=' . $booking["bid"];
+                                        $statement = $pdo->query($sql);
+                                        $seats = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                        foreach ($seats as $seat ) {
+                                            echo $seatConv[$seat["ColumnSeat"]];
+                                            echo $seat["RowSeat"];
+                                            echo " ";
+                                        }
+                                        echo '</div>';
+                                    }
+                                    echo '</td>';
+                                    echo '<td>Operated by: ' . $booking["AirlineName"] . '</td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                    echo '<td></td>';
+                                }
+
+                                ?>
+                                
                             </tbody>
                         </table>
 
