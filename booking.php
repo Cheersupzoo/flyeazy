@@ -10,7 +10,7 @@
     $departure = $_POST["departure"];
     // $return = $_POST["return"];
     $adult = $_POST["adult"];
-    $children = $_POST["children"];
+    // $children = $_POST["children"];
 
     $tripTypeReadable = "";
 
@@ -29,7 +29,9 @@
     }
 
     $pdo = require 'connect.php';
-    $sql = 'SELECT * , to_char("DateFrom" ,\'HH:MI am\') TimeFrom, to_char("DateTo" ,\'DD Mon YYYY HH:MI am\') TimeTo  FROM public."Flight" WHERE Date("DateFrom") = \'' . $departure . '\' AND fiid in (SELECT fiid FROM "FlightCode" WHERE "FromPlace" = \'' . $from . '\' AND "ToPlace" = \'' . $to . '\')';
+    $sql = 'SELECT * , to_char("DateFrom" ,\'HH:MI am\') TimeFrom, to_char("DateTo" ,\'DD Mon YYYY HH:MI am\') TimeTo  FROM "Flight", "FlightCode", "Airline" WHERE Date("DateFrom") = \'' . $departure . '\' AND "Flight".fiid = "FlightCode".fiid AND "FromPlace" = \''.$from.'\' AND "ToPlace" = \''.$to.'\'
+    AND "Airline".aid = "Airline".aid';
+
 
     $statement = $pdo->query($sql);
     $flights = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -108,10 +110,9 @@
                         <div class="mx-4 my-5 p-2 bg-white d-flex flex-column" style="width: 30%">
                             <div><?php echo $tripTypeReadable; ?></div>
                             <div>Cabin Class: <?php echo $cabinClass; ?></div>
-                            <div>Adult: <?php echo $adult; ?></div>
-                            <div>Children: <?php echo $children; ?></div>
-                            <input class="visually-hidden" type="text" name="adult" value= <?php echo $adult; ?> />
-                            <input class="visually-hidden" type="text" name="cabinClass" value= <?php echo $cabinClass; ?> />
+                            <div>Seat: <?php echo $adult; ?></div>
+                            <input class="visually-hidden" type="text" name="adult" value=<?php echo $adult; ?> />
+                            <input class="visually-hidden" type="text" name="cabinClass" value=<?php echo $cabinClass; ?> />
                             <button type="submit" class="btn btn-primary mt-auto">Confirm</button>
                             <a href="./" class="btn text-black text-decoration-none">Cancel</a>
                         </div>
@@ -135,14 +136,14 @@
                                             echo '<tr>';
                                             echo '<td scope="row">' . $flight['timefrom'] . '</td>';
                                             echo '<td>' . $flight['timeto'] . '</td>';
-                                            echo '<td>JAL</td>';
+                                            echo '<td>'. $flight['AirlineFlight'] . '</td>';
                                             echo '<td>' . $flight['fiid'] . '</td>';
                                             echo '<td><input type="radio" id="flight" name="flight" value="' . $flight['fid'] . '" required /></td>';
                                             echo '</td>';
                                         }
 
                                         ?>
-                                        
+
                                     </tbody>
                                 </table>
                             </div>

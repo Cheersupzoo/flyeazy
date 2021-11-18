@@ -70,11 +70,11 @@
 
                                 <div class="d-flex flex-column mt-2">
                                     <div class="text-white">From</div>
-                                    <input type="text" class="form-control" name="from">
+                                    <input type="text" class="form-control" name="from" required>
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">To</div>
-                                    <input type="text" class="form-control" name="to">
+                                    <input type="text" class="form-control" name="to" required>
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">Cabin Class</div>
@@ -90,19 +90,15 @@
 
                                 <div class="d-flex flex-column mt-2">
                                     <div class="text-white">Departure</div>
-                                    <input type="date" class="form-control" name="departure">
+                                    <input type="date" class="form-control" name="departure" required>
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
                                     <div class="text-white">Return</div>
                                     <input type="date" class="form-control" name="return" disabled>
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
-                                    <div class="text-white">Adult (16+)</div>
+                                    <div class="text-white">Seat</div>
                                     <input type="number" class="form-control" name="adult" min="0" max="8" value="2">
-                                </div>
-                                <div class="d-flex flex-column ms-3 mt-2">
-                                    <div class="text-white">Children</div>
-                                    <input type="number" class="form-control" name="children" min="0" max="8" value="0">
                                 </div>
                                 <div class="d-flex flex-column ms-md-3 mt-2">
 
