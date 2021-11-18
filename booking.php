@@ -30,8 +30,7 @@
 
     $pdo = require 'connect.php';
     $sql = 'SELECT * , to_char("DateFrom" ,\'HH:MI am\') TimeFrom, to_char("DateTo" ,\'DD Mon YYYY HH:MI am\') TimeTo  FROM "Flight", "FlightCode", "Airline" WHERE Date("DateFrom") = \'' . $departure . '\' AND "Flight".fiid = "FlightCode".fiid AND "FromPlace" = \''.$from.'\' AND "ToPlace" = \''.$to.'\'
-    AND "Airline".aid = "Airline".aid';
-
+    AND "Airline".aid = "FlightCode".aid';
 
     $statement = $pdo->query($sql);
     $flights = $statement->fetchAll(PDO::FETCH_ASSOC);
