@@ -12,6 +12,15 @@
     <?php
     include './components/isAuth.php'
     ?>
+    <?php
+    $pdo = require_once 'connect.php';
+    $sql = 'SELECT * , "FlightCode".fiid FlightCode FROM "Booking","FlightCode","Flight","Airline"
+    WHERE bid=' . $_GET["bid"] . ' AND "Flight".fid="Booking".fid AND "Flight".fiid="FlightCode".fiid AND "Airline".aid="FlightCode".aid';
+
+    $statement = $pdo->query($sql);
+    $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $booking = $bookings[0]
+    ?>
     <link href="./index.css" rel="stylesheet" />
     <link href="./styles/payment.css" rel="stylesheet" />
 
@@ -41,12 +50,11 @@
                         <div class="m-2 mt-5 p-4 text-white bg-secondary rounded-3">
                             <h5>Booking Details</h5>
                             <div>Booking ID: <?php echo $_GET["bid"] ?></div>
-                            <div>From</div>
-                            <div>To</div>
-                            <div>Departure</div>
-                            <div>Airline</div>
-                            <div>Price</div>
-    
+                            <div>Flight: <?php echo $booking["flightcode"] ?></div>
+                            <div>Airline: <?php echo $booking["AirlineFlight"] ?></div>
+                            <div>Seat: <?php echo $booking["Amount Ticket"] ?></div>
+                            <div>Price: <?php echo $booking["TotalPrice"] ?></div>
+
                         </div>
                     </div>
                     <div class="m-2">
@@ -146,7 +154,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="payment_checking.php" method="post">
+                        <form >
                             <div class="form-containerv2">
                                 <input style="display:none" type="text" name="bid" value="
                                 <?php echo $_GET["bid"]; ?>
@@ -159,7 +167,7 @@
                                     <label for="cardnumber">Card Number</label>
                                     <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric">
                                     <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    
+
                                     </svg>
                                 </div>
                                 <div class="field-containerv2">
@@ -172,7 +180,7 @@
                                 </div>
                                 <div>
                                     <a href="./booking_list.php" class="btn btn-light mt-2">Cancel</a>
-                                    <button class="btn btn-primary mt-2 ms-4">Confirm</button>
+                                    <a href="./payment_checking.php?bid=<?php echo $_GET["bid"]; ?>" class="btn btn-primary mt-2 ms-4">Confirm</a>
                                 </div>
                             </div>
                         </form>
