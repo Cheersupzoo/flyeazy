@@ -8,6 +8,6 @@ unset($_SESSION['FName']);
 unset($_SESSION['LName']);
 unset($_SESSION['uid']);
 
-header('location: ./');
+header('location: ./signin.php');
 die;
 ?>
