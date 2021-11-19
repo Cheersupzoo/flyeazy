@@ -14,38 +14,13 @@
     ?>
 
     <?php
-    $isPost = false;
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // $isPost = true;
+    $pdo = require_once 'connect.php';
+    $sql = 'SELECT * , "FlightCode".fiid FlightCode FROM "Booking","FlightCode","Flight","Airline"
+    WHERE bid=' . $_GET["bid"] . ' AND "Flight".fid="Booking".fid AND "Flight".fiid="FlightCode".fiid AND "Airline".aid="FlightCode".aid';
 
-        // $pdo = require 'connect.php';
-        // $username = $_POST["email"];
-        // $password = $_POST["password"];
-
-        // $sql = 'SELECT * FROM "User" as u WHERE u."Email" = \'' . $username . '\' and u."Password" = \'' . $password . '\'';
-
-        // $statement = $pdo->query($sql);
-        // $testers = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        // if ($testers) {
-        //     // echo "Login Sucessfully";
-        //     ob_start();
-        //     session_start();
-        //     $_SESSION['valid'] = true;
-        //     foreach ($testers as $tester) {
-        //         $_SESSION['FName'] = $tester['FName'];
-        //         $_SESSION['LName'] = $tester['LName'];
-        //         $_SESSION['uid'] = $tester['uid'];
-        //     }
-
-
-        //     header('location: ./');
-        //     die;
-        // } else {
-        //     // echo "Wrong Username or Password";
-        // }
-    }
-
+    $statement = $pdo->query($sql);
+    $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $booking = $bookings[0];
     ?>
 
     <link href="./index.css" rel="stylesheet" />
@@ -220,8 +195,7 @@
 
                         <!-- Order info -->
                         <div class="order">
-                            <p> Transaction : 1234567890 </p>
-                            <p> Pay with Credit Card : xxxxxxxxxx785 </p>
+                            <p> Transaction : <?php echo $booking["bid"] ?> </p>
                         </div>
                         <hr>
                         <!-- Details -->
@@ -229,20 +203,20 @@
                             <h3> Details </h3>
                             <div class="product">
                                 <div class="info">
-                                    <h4> FE999 </h4>
-                                    <p> BKK-LHR </p>
+                                    <h4>  <?php echo $booking["flightcode"] ?> </h4>
+                                    <p>  <?php echo $booking["FromPlace"] ?>-<?php echo $booking["ToPlace"] ?> </p>
                                     <p> One Way </p>
                                 </div>
                             </div>
 
-                            <p> 35000 THB </p>
+                            <p> <?php echo $booking["TotalPrice"] ?> THB </p>
                         </div>
 
                         <!-- Sub and total price -->
                         <div class="totalprice">
-                            <p class="sub"> Subtotal <span> 35000 THB </span></p>
+                            <p class="sub"> Subtotal <span> <?php echo $booking["TotalPrice"] ?> THB </span></p>
                             <hr>
-                            <p class="tot"> Grand Total <span> 35000 THB </span> </p>
+                            <p class="tot"> Grand Total <span> <?php echo $booking["TotalPrice"] ?> THB </span> </p>
                         </div>
 
                         <div class="container pt-5">

@@ -163,7 +163,11 @@
                                     echo '<td>Operated by: ' . $booking["AirlineName"] . '</td>';
                                     echo '<td></td>';
                                     echo '<td></td>';
-                                    echo '<td></td>';
+                                    echo '<td>';
+                                    if($status > 0) {
+                                        echo '<a href="./receipt.php?bid=' . $booking["bid"] . '" class="btn btn-light"> <img src="./assets/receipt.png" height="32px" /></a>';
+                                    }
+                                    echo '</td>';
                                 }
 
                                 ?>
