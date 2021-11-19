@@ -44,7 +44,7 @@
         <div class="flex-grow-1 mx-auto">
             <div class=" bg-white py-3 px-4 mt-5 rounded shadow-lg">
                 <div class="payment-title mt-3">
-                    <h2 class="text-center">Check in</h2>
+                    <h2 class="text-center">Self Check-in</h2>
                 </div>
                 <img style="width: 18rem; height: 18rem; object-fit: contain;" src="./assets/checkin.png" />
                 <div class="">

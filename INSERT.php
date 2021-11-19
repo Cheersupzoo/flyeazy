@@ -22,5 +22,5 @@ $tester_id = $pdo->lastInsertId();
 
 // echo 'The tester id ' . $tester_id . ' was inserted';
 if($tester_id) {
-    header("Location: ./signup");
+    header("Location: ./signin.php");
 }
