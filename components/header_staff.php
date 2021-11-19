@@ -38,7 +38,6 @@ if ($valid) {
     echo <<<HTML
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="./booking_list.php">Booking List</a></li>
                                 <li><a class="dropdown-item" href="./signout.php">Sign Out</a></li>
                             </ul>
                         </div>
