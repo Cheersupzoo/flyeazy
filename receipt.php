@@ -189,7 +189,7 @@
 
                     <div class="receipt">
 
-                        <div class="d-flex"><img class="mx-auto" style="height: 80px;" src="/flyeazy/flyeazy-logo-b.png" alt="logo" /></div>
+                        <div class="d-flex"><img class="mx-auto" style="height: 80px;" src="./flyeazy-logo-b.png" alt="logo" /></div>
 
                         <p class="greeting"> Thank you for booking with us! </p>
 
