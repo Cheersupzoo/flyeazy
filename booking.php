@@ -42,6 +42,14 @@ include './components/isAuth.php'
     $statement = $pdo->query($sql);
     $flights = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+    $sqlFrom = 'SELECT "Title","Code" FROM "Airport" WHERE apid=\''.$from.'\'';
+    $statement = $pdo->query($sqlFrom);
+    $fromAirport = $statement->fetch();
+
+    $sqlTo = 'SELECT "Title","Code" FROM "Airport" WHERE apid=\''.$to.'\'';
+    $statement = $pdo->query($sqlTo);
+    $toAirport = $statement->fetch();
+
     ?>
 
     <title>FlyEazy</title>
@@ -124,7 +132,7 @@ include './components/isAuth.php'
                         </div>
                         <div class="mx-4 my-5 p-2 bg-white d-flex flex-column" style="width: 70%">
                             <div>
-                                <div><?php echo $from; ?> to <?php echo $to; ?></div>
+                                <div><?php echo $fromAirport["Title"]."(".$fromAirport["Code"].")"; ?> to <?php echo $toAirport["Title"]."(".$toAirport["Code"].")"; ?></div>
                                 <div>Flying On <?php echo $departure; ?></div>
                                 <table class="table">
                                     <thead>

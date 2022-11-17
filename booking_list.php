@@ -94,7 +94,7 @@ include 'init.php'
                 <div class="d-flex  flex-column p-4">
 
                     <h2 class="text-center mb-2">Booking List</h2>
-                    <table class="table">
+                    <table class="table" style="overflow-y: scroll;height: calc(100vh - 374px);   display: table-caption;">
                         <thead>
                         <tr class="table-dark">
                             <th scope="col">ID</th>
@@ -105,7 +105,7 @@ include 'init.php'
                             <th scope="col">Status</th>
                         </tr>
                         </thead>
-                        <tbody style="overflow-y: scroll;height: calc(100vh - 420px);   display: table-caption;">
+                        <tbody >
                         <?php
                         foreach ($bookings as $booking) {
                             switch ($booking["Status"]) {
@@ -130,8 +130,17 @@ include 'init.php'
 
                             echo '<tr class="table-secondary">';
                             echo '<td class="fw-bold">' . $booking["bid"] . '</td>';
-                            echo '<td scope="row">' . $booking["FromPlace"] . '</td>';
-                            echo '<td>' . $booking["ToPlace"] . '</td>';
+
+                            $sqlFrom = 'SELECT "Title","Code" FROM "Airport" WHERE apid=\'' . $booking["FromPlace"] . '\'';
+                            $statement = $pdo->query($sqlFrom);
+                            $fromAirport = $statement->fetch();
+                            echo '<td scope="row">' . $fromAirport["Title"] . " (" . $fromAirport["Code"] . ")" . '</td>';
+
+                            $sqlTo = 'SELECT "Title","Code" FROM "Airport" WHERE apid=\'' . $booking["ToPlace"] . '\'';
+                            $statement = $pdo->query($sqlTo);
+                            $toAirport = $statement->fetch();
+                            echo '<td>' . $toAirport["Title"] . " (" . $toAirport["Code"] . ")" . '</td>';
+
                             echo '<td>' . $booking["FlightCode"] . '</td>';
                             echo '<td>' . $booking["DateFromF"] . '</td>';
                             echo '<td>';

@@ -57,7 +57,7 @@ include 'init.php'
                             <h5>Booking Details</h5>
                             <div>Booking ID: <?php echo $_GET["bid"] ?></div>
                             <div>Flight: <?php echo $booking["flightcode"] ?></div>
-                            <div>Airline: <?php echo $booking["AirlineFlight"] ?></div>
+                            <div>Airline: <?php echo $booking["AirlineName"] ?></div>
                             <div>Seat: <?php $sql = 'SELECT * FROM "Ticket" WHERE bid=' . $booking["bid"];
                                         $statement = $pdo->query($sql);
                                         $seats = $statement->fetchAll(PDO::FETCH_ASSOC);

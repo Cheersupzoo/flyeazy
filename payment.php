@@ -55,7 +55,7 @@ include 'init.php'
                             <h5>Booking Details</h5>
                             <div>Booking ID: <?php echo $_GET["bid"] ?></div>
                             <div>Flight: <?php echo $booking["flightcode"] ?></div>
-                            <div>Airline: <?php echo $booking["AirlineFlight"] ?></div>
+                            <div>Airline: <?php echo $booking["AirlineName"] ?></div>
                             <div>Seat: <?php echo $booking["Amount Ticket"] ?></div>
                             <div>Price: <?php echo $booking["TotalPrice"] ?></div>
 
