@@ -1,6 +1,9 @@
 <?php
 include 'init.php'
 ?>
+<?php
+include './components/isAuth.php'
+?>
 
 <!DOCTYPE html>
 <html lang="en">

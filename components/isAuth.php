@@ -1,5 +1,5 @@
 <?php
     $valid = isset($_SESSION["valid"]);
     if(!$valid) {
-        header("Location: ./");
+        header("Location: ./signin.php");
     }
