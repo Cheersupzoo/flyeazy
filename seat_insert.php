@@ -1,11 +1,11 @@
 <?php
 $seats = $_POST["seat"];
-print_r($seats);
+//print_r($seats);
 $pdo = require_once 'connect.php';
 foreach ($seats as $seat) {
     $seat = explode(" ", $seat);
-    echo $seat[0];
-    echo $seat[1];
+//    echo $seat[0];
+//    echo $seat[1];
 
     
 
