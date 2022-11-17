@@ -1,4 +1,8 @@
 <?php
+include 'init.php'
+?>
+
+<?php
 $isPost = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isPost = true;
@@ -14,8 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($testers) {
         // echo "Login Sucessfully";
-        ob_start();
-        session_start();
         $_SESSION['valid'] = true;
         foreach ($testers as $tester) {
             $_SESSION['FName'] = $tester['FName'];
