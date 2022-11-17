@@ -20,7 +20,6 @@ include 'init.php'
     $pdo = require 'connect.php';
     $sql = 'SELECT *, "FlightCode".fiid "FlightCode", to_char("DateFrom" ,\'HH:MI am DD Mon YYYY\') "DateFromF" FROM "Booking","FlightCode","Flight","Airline" WHERE uid=' . $_SESSION['uid'] . ' AND "Flight".fid="Booking".fid AND "Flight".fiid="FlightCode".fiid AND "Airline".aid="FlightCode".aid ORDER BY "DateFrom" DESC';
 
-    echo "<div>".$sql."</div>";
     $statement = $pdo->query($sql);
     $bookings = $statement->fetchAll(PDO::FETCH_ASSOC);
 
