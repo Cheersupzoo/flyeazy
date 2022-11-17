@@ -7,7 +7,7 @@ echo <<<HTML
 
 
                 <div class=" mb-2  mb-md-0 text-white fw-bold">
-                © 2021 FLYEAZY All RIGHTS RESERVED. 
+                © 2022 FLYEAZY All RIGHTS RESERVED. 
                 </div>
 
                 
