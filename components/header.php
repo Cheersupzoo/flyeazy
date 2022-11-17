@@ -9,7 +9,7 @@ echo <<<HTML
                 
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="./index.php" class="nav-link px-2 link-secondary"><img style="height: 55px;" src="/flyeazy/flyeazy-logo.png" alt="logo"/></a></li>
+                    <li><a href="./index.php" class="nav-link px-2 link-secondary"><img style="height: 55px;" src="./flyeazy-logo.png" alt="logo"/></a></li>
 
                 </ul>
 
