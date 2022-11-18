@@ -94,8 +94,9 @@ include 'init.php'
                 <div class="d-flex  flex-column p-4">
 
                     <h2 class="text-center mb-2">Booking List</h2>
-                    <table class="table" style="overflow-y: scroll;height: calc(100vh - 374px);   display: table-caption;">
-                        <thead>
+                    <table class="table"
+                           style="overflow-y: scroll;height: calc(100vh - 374px);   display: table-caption;">
+                        <thead style="width: 100%;<?php if (count($bookings) == 0) echo 'display: table;' ?>">
                         <tr class="table-dark">
                             <th scope="col">ID</th>
                             <th scope="col">From</th>
@@ -105,7 +106,7 @@ include 'init.php'
                             <th scope="col">Status</th>
                         </tr>
                         </thead>
-                        <tbody >
+                        <tbody>
                         <?php
                         foreach ($bookings as $booking) {
                             switch ($booking["Status"]) {
