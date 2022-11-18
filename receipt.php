@@ -27,15 +27,13 @@ include 'init.php'
     $booking = $bookings[0];
     ?>
 
-    <link href="./index.css" rel="stylesheet" />
-
+    <link href="./index.css" rel="stylesheet"/>
 
 
     <style>
         body {
             background-color: #D3E1E1;
         }
-
 
 
         .bg {
@@ -142,7 +140,7 @@ include 'init.php'
         }
 
         /* Net price */
-        .details>p {
+        .details > p {
             color: #6f8d90;
             margin-top: 25px;
             font-size: 15px
@@ -182,68 +180,79 @@ include 'init.php'
 </head>
 
 <body>
-    <div class="d-flex flex-column" style="height: 100vh">
-        <?php
-        include 'components/header.php'
-        ?>
-        <div class=" d-flex flex-column flex-grow-1 position-relative">
-            <div class="bg"></div>
-            <div class="bg-text">
-                <div class="mx-auto " style=" padding-top: 40px; ">
+<div class="d-flex flex-column" style="height: 100vh">
+    <?php
+    include 'components/header.php'
+    ?>
+    <div class=" d-flex flex-column flex-grow-1 position-relative">
+        <div class="bg"></div>
+        <div class="bg-text">
+            <div class="mx-auto " style=" padding-top: 40px; ">
 
-                    <div class="receipt">
+                <div class="receipt">
 
-                        <div class="d-flex"><img class="mx-auto" style="height: 80px;" src="./flyeazy-logo-b.png" alt="logo" /></div>
+                    <div class="d-flex"><img class="mx-auto" style="height: 80px;" src="./flyeazy-logo-b.png"
+                                             alt="logo"/></div>
 
-                        <p class="greeting"> Thank you for booking with us! </p>
+                    <p class="greeting"> Thank you for booking with us! </p>
 
-                        <!-- Order info -->
-                        <div class="order">
-                            <p> Transaction : <?php echo $booking["bid"] ?> </p>
-                        </div>
-                        <hr>
-                        <!-- Details -->
-                        <div class="details">
-                            <h3> Details </h3>
-                            <div class="product">
-                                <div class="info">
-                                    <h4>  <?php echo $booking["flightcode"] ?> </h4>
-                                    <p>  <?php echo $booking["FromPlace"] ?>-<?php echo $booking["ToPlace"] ?> </p>
-                                    <p> One Way </p>
-                                </div>
-                            </div>
-
-                            <p> <?php echo $booking["TotalPrice"] ?> THB </p>
-                        </div>
-
-                        <!-- Sub and total price -->
-                        <div class="totalprice">
-                            <p class="sub"> Subtotal <span> <?php echo $booking["TotalPrice"] ?> THB </span></p>
-                            <hr>
-                            <p class="tot"> Grand Total <span> <?php echo $booking["TotalPrice"] ?> THB </span> </p>
-                        </div>
-
-                        <div class="container pt-5">
-                            <div class="row">
-                                <a href="./booking_list.php" class="btn btn-success col mx-2">Back</a>
-                                <button id="printbtn" class="btn btn-dark col mx-2">
-                                    Print
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
-                                        <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
-                                        <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
-                                    </svg></button>
-                            </div>
-                        </div>
-
+                    <!-- Order info -->
+                    <div class="order">
+                        <p> Transaction : <?php echo $booking["bid"] ?> </p>
                     </div>
+                    <hr>
+                    <!-- Details -->
+                    <div class="details">
+                        <h3> Details </h3>
+                        <div class="product">
+                            <div class="info">
+                                <h4>  <?php echo $booking["flightcode"] ?> </h4>
+                                <p>  <?php
+                                    $sqlFrom = 'SELECT "Title","Code" FROM "Airport" WHERE apid=\'' . $booking["FromPlace"] . '\'';
+                                    $statement = $pdo->query($sqlFrom);
+                                    $fromAirport = $statement->fetch();
+                                    echo $fromAirport["Code"] ?>-<?php
+                                    $sqlTo = 'SELECT "Title","Code" FROM "Airport" WHERE apid=\'' . $booking["ToPlace"] . '\'';
+                                    $statement = $pdo->query($sqlTo);
+                                    $toAirport = $statement->fetch();
+                                    echo $toAirport["Code"] ?> </p>
+                                <p> One Way </p>
+                            </div>
+                        </div>
+
+                        <p> <?php echo $booking["TotalPrice"] ?> THB </p>
+                    </div>
+
+                    <!-- Sub and total price -->
+                    <div class="totalprice">
+                        <p class="sub"> Subtotal <span> <?php echo $booking["TotalPrice"] ?> THB </span></p>
+                        <hr>
+                        <p class="tot"> Grand Total <span> <?php echo $booking["TotalPrice"] ?> THB </span></p>
+                    </div>
+
+                    <div class="container pt-5">
+                        <div class="row">
+                            <a href="./booking_list.php" class="btn btn-success col mx-2">Back</a>
+                            <button id="printbtn" class="btn btn-dark col mx-2">
+                                Print
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                    <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                    <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <?php
-        include 'components/footer.php'
-        ?>
     </div>
-    </div>
+    <?php
+    include 'components/footer.php'
+    ?>
+</div>
+</div>
 </body>
 <script>
     var printbtn = document.querySelector("#printbtn");
