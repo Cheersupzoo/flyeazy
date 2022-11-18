@@ -94,7 +94,10 @@ include 'init.php'
                             <input type="text" class="form-control" name="LastName" id="formGroupExampleInput4" placeholder="Last Name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="MobilePhone" id="formGroupExampleInput5" placeholder="Mobile Phone">
+                            <input type="text" class="form-control" name="MobilePhone" maxlength="10" id="formGroupExampleInput5" placeholder="Mobile Phone">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="Passport" id="formGroupExampleInput6" placeholder="Passport">
                         </div>
 
                         
