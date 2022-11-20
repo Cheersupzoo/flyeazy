@@ -11,10 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["email"];
     $password = $_POST["password"];
 
-    $sql = 'SELECT * FROM "User" as u WHERE u."Email" = \'' . $username . '\' and u."Password" = \'' . $password . '\'';
+    $sql = 'SELECT * FROM "User" as u WHERE u."Email" = ? and u."Password" = ?';
 
-    $statement = $pdo->query($sql);
-    $testers = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$username,$password]);
+    $testers = $statement->fetchAll();
 
     if ($testers) {
         // echo "Login Sucessfully";
